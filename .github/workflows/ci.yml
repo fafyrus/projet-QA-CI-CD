@@ -1,0 +1,26 @@
+name: Pipeline QA Intégration Continue
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test-automatise:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. Récupérer le code du projet
+      uses: actions/checkout@v4
+
+    - name: 2. Installer Node.js sur la machine virtuelle
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: 3. Installer les dépendances (Jest)
+      run: npm ci
+
+    - name: 4. Lancer le robot de test QA
+      run: npm test
