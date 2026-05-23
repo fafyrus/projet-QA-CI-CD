@@ -1,1 +1,5 @@
-function additionner(a, b) { return a + b; } module.exports = additionner;
+function additionner(a, b) {
+  return a + b;
+}
+
+module.exports = additionner;
